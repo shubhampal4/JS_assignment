@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Dom Operations</title>
+    <style>
+        #firsthalf{
+            float: left;
+            border-right: solid black;
+            width: 40%;
+            height: 730px;
+            padding: 5%;
+            background-color: aquamarine;
+        }
+        #secondhalf{
+            padding: 5%;
+            width: 60%;
+            height: 730px;
+            float: left;
+        }
+        #createtable:hover{
+            cursor: pointer;
+            color: aquamarine;
+        }
+        table{
+            visibility: visible;
+        }
+        #rowdata{
+            visibility:hidden;
+            display: none;
+        }
+        a{
+            cursor: pointer;
+        }
+        .rowmanipulation{
+            color: brown;
+        }
+    </style>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+  </head>
+  <body>
+    <div id="firsthalf">
+    <h2>DOM MANIPULATION</h2>
+    <ul>
+        <li><a><div class="rowmanipulation" id="addrow" onClick="addrow()">Add row</div></a></li>
+        <div id="rowdata">
+            <label for="numrow">Enter Name:</label><br>
+            <input type="text" id="rowname"><br><br>
+            <label for="numcol">Enter class:</label><br>
+            <input type="text" id="rowclass"><br><br>
+            <label for="numcol">Enter Rollnumber:</label><br>
+            <input type="number" id="rowrol"><br><br>
+            <button class="btn btn-success" onclick="rowaddition()">ADD</button>
+        </div>
+        <li><a><div class="rowmanipulation" onclick="deleterow()">Delete row</div></a></li>
+        <li><a><div class="rowmanipulation" onclick="addstyle()">Add style</div></a></li>
+        <li><a><div class="rowmanipulation" onclick="delstyle()">Delete style</div></a></li>
+    </ul>
+    </ul>
+    </ul>
+    <br>
+    
+    </div>
+    <div id="secondhalf">
+        <h3>Check Out Your table Below:</h3><br>
+        <table id="finaltable" class="table table-stripped table-bordered">
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">class</th>
+                <th scope="col">Roll No.</th>
+              </tr>
+          </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>    
+    <script>
+        function addrow()
+        {
+            $("#rowdata").css({"visibility":"visible"});
+            $("#rowdata").css({"display":"inline"});
+        }
+        function rowaddition()
+        {
+            var name=$("#rowname").val();
+            var rowclass=$("#rowclass").val();
+            var rollnumber=$("#rowrol").val();
+            console.log(rowclass);
+            markup = "<tr><td>"+name+"</td><td>"+rowclass+"</td><td>" 
+                +rollnumber+"</td></tr>";
+            $("#finaltable").append(markup);    
+        }
+
+        function deleterow() {
+            document.getElementById("finaltable").deleteRow(1);
+        }
+
+        function addstyle(){
+            const link=document.querySelector("link")
+            link.href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            const script=document.querySelectorAll("script")[1]
+            script.src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+
+        }
+        function delstyle(){
+            const link=document.querySelector("link")
+            link.href=""
+            const script=document.querySelectorAll("script")[1]
+            script.src=""
+
+        }
+
+    </script>
+    </body>
+</html>
